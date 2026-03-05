@@ -11,6 +11,9 @@ public class MergeController : MonoBehaviour
     // Prefab del objeto del siguiente nivel que se creará al fusionarse (si es el nivel máximo, se deja vacío)
     public GameObject nextLevelPrefab;
 
+  
+
+
     // Variable para evitar que un mismo objeto se fusione dos veces
     private bool hasMerged = false;
 
@@ -22,7 +25,7 @@ public class MergeController : MonoBehaviour
         {
 
             // Comprobamos que el otro objeto es un objeto mergeable
-            if (collision.gameObject.CompareTag("Mergable"))
+            if (collision.gameObject.CompareTag("Mergeable"))
             {
                 // Obtenemos el componente MergeController del otro objeto
                 MergeController otherMerge = collision.gameObject.GetComponent<MergeController>();
@@ -40,7 +43,7 @@ public class MergeController : MonoBehaviour
                         // Si hay un prefab de siguiente nivel, lo instanciamos en la posición de este objeto
                         if (nextLevelPrefab != null)
                         {
-                            Instantiate(nextLevelPrefab, Vector3.zero, Quaternion.identity);
+                            Instantiate(nextLevelPrefab, transform.position, Quaternion.identity);
                         }
 
                         // Destruimos ambos objetos originales
